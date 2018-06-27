@@ -90,6 +90,7 @@ open class WhistleFactory: UIViewController {
   // MARK: - Setup
 
   open func setupWindow() {
+    whistleWindow.backgroundColor = view.backgroundColor
     whistleWindow.addSubview(self.view)
     whistleWindow.clipsToBounds = true
     moveWindowToFront()
