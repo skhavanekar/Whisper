@@ -22,11 +22,12 @@ public struct Announcement {
   public var image: UIImage?
   public var duration: TimeInterval
   public var textColor: UIColor
+  public var isDragIndicatorHidden: Bool
   public var backgroundColor: UIColor
   public var closeButtonImage: UIImage?
   public var action: (() -> Void)?
 
-    public init(title: String, subtitle: String? = nil, image: UIImage? = nil, duration: TimeInterval = 2, textColor: UIColor = .white, backgroundColor: UIColor = .black, closeButtonImage: UIImage? = nil, action: (() -> Void)? = nil) {
+    public init(title: String, subtitle: String? = nil, image: UIImage? = nil, duration: TimeInterval = 2, textColor: UIColor = .white, backgroundColor: UIColor = .black, closeButtonImage: UIImage? = nil, isDragIndicatorHidden: Bool = false, action: (() -> Void)? = nil) {
     self.title = title
     self.subtitle = subtitle
     self.image = image
@@ -35,6 +36,7 @@ public struct Announcement {
     self.textColor = textColor
     self.closeButtonImage = closeButtonImage
     self.backgroundColor = backgroundColor
+    self.isDragIndicatorHidden = isDragIndicatorHidden
   }
 }
 

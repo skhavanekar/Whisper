@@ -138,6 +138,7 @@ open class ShoutView: UIView {
     titleLabel.textColor = announcement.textColor
     backgroundView.backgroundColor = announcement.backgroundColor
     closeButton.setImage(announcement.closeButtonImage, for: .normal)
+    indicatorView.isHidden = announcement.isDragIndicatorHidden
     
     displayTimer.invalidate()
     displayTimer = Timer.scheduledTimer(timeInterval: announcement.duration,
