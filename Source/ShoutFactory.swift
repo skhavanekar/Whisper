@@ -11,6 +11,7 @@ open class ShoutView: UIView {
     public static let imageOffset: CGFloat = 18
     public static var textOffset: CGFloat = 75
     public static var touchOffset: CGFloat = 40
+    public static let closeButtonHeight: CGFloat = 20
   }
 
   open fileprivate(set) lazy var backgroundView: UIView = {
@@ -29,6 +30,12 @@ open class ShoutView: UIView {
     view.isUserInteractionEnabled = true
 
     return view
+    }()
+    
+    open fileprivate(set) lazy var closeButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        button.isUserInteractionEnabled = false
+        return button
     }()
 
   open fileprivate(set) lazy var imageView: UIImageView = {
@@ -87,7 +94,7 @@ open class ShoutView: UIView {
     super.init(frame: frame)
 
     addSubview(backgroundView)
-    [imageView, titleLabel, subtitleLabel, indicatorView].forEach {
+    [imageView, titleLabel, subtitleLabel, indicatorView, closeButton].forEach {
       $0.autoresizingMask = []
       backgroundView.addSubview($0)
     }
@@ -130,6 +137,7 @@ open class ShoutView: UIView {
     subtitleLabel.text = announcement.subtitle
     titleLabel.textColor = announcement.textColor
     backgroundView.backgroundColor = announcement.backgroundColor
+    closeButton.setImage(announcement.closeButtonImage, for: .normal)
     
     displayTimer.invalidate()
     displayTimer = Timer.scheduledTimer(timeInterval: announcement.duration,
@@ -158,7 +166,7 @@ open class ShoutView: UIView {
     let imageSize: CGFloat = imageView.image != nil ? Dimensions.imageSize : 0
 
     [titleLabel, subtitleLabel].forEach {
-        $0.frame.size.width = totalWidth - imageSize - (Dimensions.imageOffset * 2)
+        $0.frame.size.width = totalWidth - imageSize - (Dimensions.imageOffset * 2) - Dimensions.closeButtonHeight - 40
         $0.sizeToFit()
     }
 
@@ -192,6 +200,15 @@ open class ShoutView: UIView {
                                    y: backgroundView.frame.height - Dimensions.indicatorHeight - 5,
                                    width: Dimensions.indicatorWidth,
                                    height: Dimensions.indicatorHeight)
+        
+        if announcement?.closeButtonImage != nil {
+            closeButton.frame = CGRect(x: backgroundView.frame.size.width - Dimensions.closeButtonHeight,
+                                       y: backgroundView.frame.height / 2,
+                                       width: Dimensions.closeButtonHeight,
+                                       height: Dimensions.closeButtonHeight)
+        } else {
+            closeButton.frame = CGRect.zero
+        }
     }
   }
 

@@ -23,15 +23,17 @@ public struct Announcement {
   public var duration: TimeInterval
   public var textColor: UIColor
   public var backgroundColor: UIColor
+  public var closeButtonImage: UIImage?
   public var action: (() -> Void)?
 
-    public init(title: String, subtitle: String? = nil, image: UIImage? = nil, duration: TimeInterval = 2, textColor: UIColor = .white, backgroundColor: UIColor = .black, action: (() -> Void)? = nil) {
+    public init(title: String, subtitle: String? = nil, image: UIImage? = nil, duration: TimeInterval = 2, textColor: UIColor = .white, backgroundColor: UIColor = .black, closeButtonImage: UIImage? = nil, action: (() -> Void)? = nil) {
     self.title = title
     self.subtitle = subtitle
     self.image = image
     self.duration = duration
     self.action = action
     self.textColor = textColor
+    self.closeButtonImage = closeButtonImage
     self.backgroundColor = backgroundColor
   }
 }
