@@ -25,7 +25,7 @@ public struct Announcement {
   public var backgroundColor: UIColor
   public var action: (() -> Void)?
 
-    public init(title: String, subtitle: String? = nil, image: UIImage? = nil, duration: TimeInterval = 2, action: (() -> Void)? = nil, textColor: UIColor = .white, backgroundColor: UIColor = .black) {
+    public init(title: String, subtitle: String? = nil, image: UIImage? = nil, duration: TimeInterval = 2, textColor: UIColor = .white, backgroundColor: UIColor = .black, action: (() -> Void)? = nil) {
     self.title = title
     self.subtitle = subtitle
     self.image = image
