@@ -49,7 +49,7 @@ open class ShoutView: UIView {
 
   open fileprivate(set) lazy var titleLabel: UILabel = {
     let label = UILabel()
-    label.font = FontList.Shout.title
+    label.font = UIFont(name: "HelveticaNeue-Medium", size: 14) ?? FontList.Shout.title
     label.textColor = ColorList.Shout.title
     label.numberOfLines = 2
 
@@ -166,7 +166,7 @@ open class ShoutView: UIView {
     let imageSize: CGFloat = imageView.image != nil ? Dimensions.imageSize : 0
 
     [titleLabel, subtitleLabel].forEach {
-        $0.frame.size.width = totalWidth - imageSize - (Dimensions.imageOffset * 2) - Dimensions.closeButtonHeight - 40
+        $0.frame.size.width = totalWidth - imageSize - (Dimensions.imageOffset * 2) - Dimensions.closeButtonHeight - 30
         $0.sizeToFit()
     }
 
@@ -202,8 +202,8 @@ open class ShoutView: UIView {
                                    height: Dimensions.indicatorHeight)
         
         if announcement?.closeButtonImage != nil {
-            closeButton.frame = CGRect(x: backgroundView.frame.size.width - Dimensions.closeButtonHeight,
-                                       y: backgroundView.frame.height / 2,
+            closeButton.frame = CGRect(x: backgroundView.frame.size.width - Dimensions.closeButtonHeight * 2,
+                                       y: (backgroundView.frame.height - Dimensions.closeButtonHeight) / 2,
                                        width: Dimensions.closeButtonHeight,
                                        height: Dimensions.closeButtonHeight)
         } else {
