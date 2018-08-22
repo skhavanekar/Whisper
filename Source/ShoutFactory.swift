@@ -120,7 +120,6 @@ open class ShoutView: UIView {
     shouldSilent = false
     configureView(announcement)
     shout(to: to)
-
     self.completion = completion
   }
 
@@ -129,7 +128,9 @@ open class ShoutView: UIView {
     imageView.image = announcement.image
     titleLabel.text = announcement.title
     subtitleLabel.text = announcement.subtitle
-
+    titleLabel.textColor = announcement.textColor
+    backgroundView.backgroundColor = announcement.backgroundColor
+    
     displayTimer.invalidate()
     displayTimer = Timer.scheduledTimer(timeInterval: announcement.duration,
       target: self, selector: #selector(ShoutView.displayTimerDidFire), userInfo: nil, repeats: false)
